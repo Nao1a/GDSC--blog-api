@@ -13,5 +13,5 @@ app.use(cors());
 
 connectDB();
 
-const port = process.env.PORT || 3000
-app.listen(console.log("server listening on port"))
+const port = process.env.PORT 
+app.listen(console.log("server listening on port " + port))
