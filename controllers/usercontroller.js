@@ -36,7 +36,7 @@ import {
   
   const generateAuthToken = (user) => {
     return jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "4h",
     });
   };
   
