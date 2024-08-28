@@ -1,15 +1,15 @@
 import user from "../models/user.js"
 import bcrypt from "bcrypt"
 
-export const signupPersistence = async (user) => {
+export const signupPersistence = async (userdata) => {
     try {
-        const hashedPassword = await bcrypt.hash(user.password, 10);
-        const newUser = new user({
-            email: user.email,
+        const hashedPassword = await bcrypt.hash(userdata.password, 10);
+        const newuser = new user({
+            email: userdata.email,
             password: hashedPassword
         });
 
-        const createdUser = await newUser.save();
+        const createdUser = await newuser.save();
         return createdUser;
     }
     catch (error) {
@@ -19,8 +19,8 @@ export const signupPersistence = async (user) => {
 
 export const loginPersistence = async(email, password) => {
     try{
-        const user = await findUserEmail(email);
-        if (user) return null;
+        const user = await findUserByEmail(email);
+        if (!user) return null;
 
         const validPassword = await bcrypt.compare(password, user.password)
         if(!validPassword) return null;

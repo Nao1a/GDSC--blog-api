@@ -19,4 +19,7 @@ app.use("/api", userroutes)
 
 
 const port = process.env.PORT 
-app.listen(console.log("server listening on port " + port)) 
+console.log(port);
+
+
+app.listen(port, console.log("server listening on port " + port)) 
